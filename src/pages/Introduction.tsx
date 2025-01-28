@@ -11,16 +11,16 @@ export function Introduction() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="prose dark:prose-invert prose-indigo max-w-none"
+      className="max-w-full overflow-hidden"
     >
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-indigo-600 to-blue-500 rounded-xl overflow-hidden">
-        <div className="px-8 py-10 max-w-4xl mx-auto">
+      <div className="bg-gradient-to-r from-indigo-600 to-blue-500 -mx-4 sm:mx-0 sm:rounded-xl">
+        <div className="px-4 sm:px-8 py-6 sm:py-10">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl font-bold mb-3 text-white"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-white break-words"
           >
             Welcome to iVerify
           </motion.h1>
@@ -28,12 +28,12 @@ export function Introduction() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-lg sm:text-xl text-white/90 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed break-words"
           >
             A Comprehensive Indigent Management System for South African Municipalities
           </motion.p>
           {pageData && (
-            <div className="mt-3 text-white/80 text-sm">
+            <div className="mt-2 sm:mt-3 text-white/80 text-xs sm:text-sm">
               <LastUpdated date={pageData.lastUpdated} />
             </div>
           )}
@@ -41,15 +41,15 @@ export function Introduction() {
       </div>
 
       {/* Overview Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6 mt-3 sm:mt-6 -mx-4 px-4 sm:mx-0 sm:px-0">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+          className="bg-white dark:bg-gray-800/60 p-3 sm:p-6 rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-shadow"
         >
-          <h2 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mt-0 mb-3">About iVerify</h2>
-          <p className="text-gray-600 dark:text-gray-300">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mt-0 mb-2">About iVerify</h2>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 break-words">
             iVerify is a modern, web-based platform that revolutionizes how municipalities handle indigent applications. 
             Built with the latest technology stack and following best practices, it provides a secure, efficient, and 
             user-friendly solution for processing and tracking indigent status applications.
@@ -60,10 +60,10 @@ export function Introduction() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+          className="bg-white dark:bg-gray-800/60 p-3 sm:p-6 rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-shadow"
         >
-          <h2 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mt-0 mb-3">Who It's For</h2>
-          <p className="text-gray-600 dark:text-gray-300">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mt-0 mb-2">Who It's For</h2>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 break-words">
             Designed specifically for South African municipalities, our platform streamlines the process of managing and 
             verifying indigent status applications, making it easier for both municipal staff and applicants.
           </p>
@@ -71,10 +71,10 @@ export function Introduction() {
       </div>
 
       {/* Key Features Section */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-800/30 rounded-xl overflow-hidden mt-6">
-        <div className="p-8">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-800/30 -mx-4 sm:mx-0 sm:rounded-xl mt-3 sm:mt-6">
+        <div className="p-3 sm:p-8">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-6">Key Features</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {[
               {
                 title: "Real-time Processing",
@@ -102,23 +102,23 @@ export function Introduction() {
                 icon: "📊"
               },
               {
-                title: "Municipality Settings",
-                description: "Customizable settings for each municipality",
-                icon: "⚙️"
+                title: "Automated Notifications",
+                description: "Keep all stakeholders informed with automated updates",
+                icon: "🔔"
               }
             ].map((feature, index) => (
               <motion.div
-                key={index}
+                key={feature.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 + index * 0.1 }}
-                className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-sm hover:shadow-md transition-all hover:-translate-y-1"
+                transition={{ delay: 0.6 + index * 0.1 }}
+                className="bg-white dark:bg-gray-800/60 p-3 sm:p-6 rounded-lg sm:rounded-xl"
               >
-                <div className="text-3xl mb-3">{feature.icon}</div>
-                <h3 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2">
+                <div className="text-xl sm:text-2xl lg:text-3xl mb-2">{feature.icon}</div>
+                <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 dark:text-white mb-1 sm:mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 dark:text-gray-400 break-words">
                   {feature.description}
                 </p>
               </motion.div>
@@ -128,9 +128,9 @@ export function Introduction() {
       </div>
 
       {/* Getting Started Section */}
-      <div className="bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-900/50 rounded-xl overflow-hidden mt-6">
-        <div className="p-8">
-          <h2 className="text-2xl font-bold text-indigo-900 dark:text-indigo-100 mb-4">Ready to Get Started?</h2>
+      <div className="bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-900/50 rounded-lg sm:rounded-xl overflow-hidden mt-3 sm:mt-6">
+        <div className="p-3 sm:p-8">
+          <h2 className="text-2xl font-bold text-indigo-900 dark:text-indigo-100 mb-3">Ready to Get Started?</h2>
           <p className="text-indigo-700 dark:text-indigo-300 mb-6">
             Follow our step-by-step guide to set up iVerify for your municipality.
           </p>

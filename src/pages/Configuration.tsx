@@ -7,66 +7,121 @@ export function Configuration() {
 
   return (
     <div className="prose dark:prose-invert prose-indigo max-w-none">
-      <h1>Configuration Guide</h1>
-      {pageData && <LastUpdated date={pageData.lastUpdated} />}
-
-      <h2>Environment Setup</h2>
-      <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-100 dark:border-amber-900/50 rounded-lg p-6 my-6">
-        <h3 className="text-amber-800 dark:text-amber-200 mt-0">Required Environment Variables</h3>
-        <pre className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-          <code>
-            # Supabase Configuration
-            VITE_SUPABASE_URL=your_supabase_project_url
-            VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-
-            # Application Settings
-            VITE_APP_NAME=iVerify
-            VITE_APP_URL=http://localhost:5173
-
-            # Optional Features
-            VITE_ENABLE_SMS_NOTIFICATIONS=true
-            VITE_ENABLE_EMAIL_NOTIFICATIONS=true
-          </code>
-        </pre>
-      </div>
-
-      <h2>Supabase Configuration</h2>
-      <div className="space-y-6">
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-          <h3 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mt-0">Database Setup</h3>
-          <ol className="space-y-2">
-            <li>Create required tables using migration scripts</li>
-            <li>Configure Row Level Security policies</li>
-            <li>Set up database functions and triggers</li>
-            <li>Enable PostGIS extensions if needed</li>
-          </ol>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-          <h3 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mt-0">Authentication</h3>
-          <ol className="space-y-2">
-            <li>Configure authentication providers</li>
-            <li>Set up email templates</li>
-            <li>Configure password policies</li>
-            <li>Set up role management</li>
-          </ol>
-        </div>
-
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-          <h3 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mt-0">Storage</h3>
-          <ol className="space-y-2">
-            <li>Create storage buckets for documents</li>
-            <li>Configure access policies</li>
-            <li>Set up file size limits</li>
-            <li>Configure allowed file types</li>
-          </ol>
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Configuration Guide</h1>
+        <div className="text-sm text-gray-600 dark:text-gray-400">
+          {pageData && <LastUpdated date={pageData.lastUpdated} />}
         </div>
       </div>
 
-      <h2>Municipality Settings</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Environment Setup</h2>
+      <div className="bg-amber-50 dark:bg-amber-900/30 border border-amber-100 dark:border-amber-900/50 rounded-lg p-4 mb-6">
+        <h3 className="text-xl font-bold text-amber-800 dark:text-amber-200 mt-0 mb-3">Required Environment Variables</h3>
+        <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+          <pre className="text-sm text-gray-300 whitespace-pre-wrap break-all">
+            <code>
+              # Supabase Configuration
+              VITE_SUPABASE_URL=your_supabase_project_url
+              VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+              # Application Settings
+              VITE_APP_NAME=iVerify
+              VITE_API_VERSION=v1
+            </code>
+          </pre>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Database Setup</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">1. Create Tables</h3>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            Run migration scripts:
+          </p>
+          <ul className="text-sm list-disc pl-4 mt-2 space-y-1">
+            <li>001_create_users</li>
+            <li>002_create_applications</li>
+            <li>003_create_documents</li>
+          </ul>
+        </div>
+
+        <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">2. Security Policies</h3>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            Configure RLS policies:
+          </p>
+          <ul className="text-sm list-disc pl-4 mt-2 space-y-1">
+            <li>Enable RLS on tables</li>
+            <li>Set read/write policies</li>
+            <li>Configure row filters</li>
+          </ul>
+        </div>
+
+        <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">3. Functions & Triggers</h3>
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            Set up database functions:
+          </p>
+          <ul className="text-sm list-disc pl-4 mt-2 space-y-1">
+            <li>Status update triggers</li>
+            <li>Verification functions</li>
+            <li>Notification triggers</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Authentication & Storage</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Authentication Setup</h3>
+          <ul className="text-sm list-disc pl-4 space-y-1">
+            <li>Email/Password auth</li>
+            <li>OAuth providers</li>
+            <li>SSO configuration</li>
+            <li>Role-based access</li>
+          </ul>
+        </div>
+
+        <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Storage Buckets</h3>
+          <ul className="text-sm list-disc pl-4 space-y-1">
+            <li>documents - Application files</li>
+            <li>avatars - Profile pictures</li>
+            <li>temp - Temporary storage</li>
+            <li>Access policies setup</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Email & Notifications</h2>
+      <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Email Templates</h3>
+            <ul className="text-sm list-disc pl-4 space-y-1">
+              <li>Welcome emails</li>
+              <li>Password reset</li>
+              <li>Status updates</li>
+              <li>Verification notices</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">SMS Configuration</h3>
+            <ul className="text-sm list-disc pl-4 space-y-1">
+              <li>Gateway setup</li>
+              <li>Template configuration</li>
+              <li>Delivery reports</li>
+              <li>Opt-out handling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Municipality Settings</h2>
       <div className="space-y-6">
         <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg">
-          <h3 className="text-lg font-semibold mt-0">Branding Customization</h3>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-0">Branding Customization</h3>
           <ul>
             <li>Municipality logo and colors</li>
             <li>Custom email templates</li>
@@ -76,7 +131,7 @@ export function Configuration() {
         </div>
 
         <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg">
-          <h3 className="text-lg font-semibold mt-0">Workflow Configuration</h3>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-0">Workflow Configuration</h3>
           <ul>
             <li>Application process steps</li>
             <li>Required documents</li>
@@ -86,7 +141,7 @@ export function Configuration() {
         </div>
 
         <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg">
-          <h3 className="text-lg font-semibold mt-0">User Management</h3>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-0">User Management</h3>
           <ul>
             <li>Role definitions</li>
             <li>Permission settings</li>
@@ -96,10 +151,10 @@ export function Configuration() {
         </div>
       </div>
 
-      <h2>System Customization</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">System Customization</h2>
       <div className="space-y-6">
         <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-900/50 rounded-lg p-6">
-          <h3 className="text-blue-800 dark:text-blue-200 mt-0">Application Form Configuration</h3>
+          <h3 className="text-2xl font-bold text-blue-800 dark:text-blue-200 mt-0">Application Form Configuration</h3>
           <pre className="bg-white dark:bg-gray-800 p-4 rounded-lg">
             <code>{`{
   "fields": {
@@ -121,7 +176,7 @@ export function Configuration() {
         </div>
 
         <div className="bg-green-50 dark:bg-green-900/30 border border-green-100 dark:border-green-900/50 rounded-lg p-6">
-          <h3 className="text-green-800 dark:text-green-200 mt-0">Notification Templates</h3>
+          <h3 className="text-2xl font-bold text-green-800 dark:text-green-200 mt-0">Notification Templates</h3>
           <pre className="bg-white dark:bg-gray-800 p-4 rounded-lg">
             <code>{`{
   "templates": {
@@ -139,9 +194,9 @@ export function Configuration() {
         </div>
       </div>
 
-      <h2>Integration Settings</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Integration Settings</h2>
       <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg space-y-4">
-        <h3 className="text-lg font-semibold mt-0">Available Integrations</h3>
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-0">Available Integrations</h3>
         <ul>
           <li>SMS Gateway Configuration</li>
           <li>Email Service Setup</li>
@@ -150,7 +205,7 @@ export function Configuration() {
         </ul>
 
         <div className="bg-white dark:bg-gray-700 p-4 rounded-lg">
-          <h4 className="font-semibold mt-0">Example Integration Configuration</h4>
+          <h4 className="font-bold mt-0">Example Integration Configuration</h4>
           <pre className="text-sm">
             <code>{`{
   "sms_gateway": {
@@ -168,7 +223,7 @@ export function Configuration() {
         </div>
       </div>
 
-      <h2>Maintenance and Monitoring</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Maintenance and Monitoring</h2>
       <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg">
         <ul>
           <li>System health monitoring</li>

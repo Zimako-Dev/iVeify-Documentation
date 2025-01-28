@@ -90,36 +90,38 @@ function App() {
           <div className="lg:hidden">
             {sidebarOpen && (
               <div className="fixed inset-0 z-50 bg-gray-800/40 backdrop-blur-sm dark:bg-black/80">
-                <div className="fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-white px-6 pb-6 dark:bg-gray-900 sm:max-w-sm sm:px-6">
-                  <div className="flex items-center justify-between">
+                <div className="fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-white px-4 pb-6 dark:bg-gray-900 sm:max-w-sm sm:px-6">
+                  <div className="flex items-center justify-between pt-4">
                     <button
                       type="button"
                       className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-200"
                       onClick={() => setSidebarOpen(false)}
                     >
                       <span className="sr-only">Close menu</span>
-                      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
+                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
                   </div>
-                  <Navigation mobile onNavigate={() => setSidebarOpen(false)} />
+                  <div className="mt-6 flow-root">
+                    <div className="-my-6">
+                      <Navigation mobile onNavigate={() => setSidebarOpen(false)} />
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
           </div>
 
-          <div className="flex min-h-screen">
-            {/* Desktop sidebar */}
-            <div className="hidden lg:block w-64 shrink-0 border-r border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
-              <div className="fixed top-16 w-64 h-[calc(100vh-4rem)] overflow-y-auto">
-                <Navigation />
-              </div>
+          {/* Desktop sidebar */}
+          <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-72 lg:overflow-y-auto lg:border-r lg:border-gray-200 lg:bg-white lg:pb-4 lg:dark:border-gray-800 lg:dark:bg-gray-900">
+            <div className="px-8 pt-24">
+              <Navigation />
             </div>
+          </div>
 
-            {/* Main content */}
-            <main className="flex-1">
-              <div className="max-w-[1400px] mx-auto p-4">
+          {/* Main content */}
+          <div className="lg:pl-72">
+            <main className="min-h-screen pt-24">
+              <div className="px-4 sm:px-6 lg:px-8">
                 <AnimatedRoutes />
               </div>
             </main>

@@ -48,15 +48,17 @@ export function Navigation({ mobile, onNavigate }: NavigationProps) {
 
   return (
     <nav className={`${mobile ? '' : 'sticky top-20'}`}>
-      <ul className="space-y-8">
+      <ul className="space-y-6">
         {navItems.map(section => (
-          <li key={section.name}>
-            <h2 className="font-semibold text-gray-900 dark:text-white mb-4">{section.name}</h2>
+          <li key={section.name} className="px-2">
+            <h2 className="font-semibold text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">
+              {section.name}
+            </h2>
             <motion.nav
               variants={container}
               initial="hidden"
               animate="show"
-              className="space-y-1 px-3"
+              className="space-y-0.5"
             >
               {section.items.map(item => (
                 <motion.div key={item.name} variants={item}>
@@ -64,10 +66,10 @@ export function Navigation({ mobile, onNavigate }: NavigationProps) {
                     to={item.href}
                     onClick={onNavigate}
                     className={({ isActive }) =>
-                      `block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                      `block rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
                         isActive
-                          ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
-                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-300'
+                          ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800/60 dark:hover:text-gray-300'
                       }`
                     }
                   >
