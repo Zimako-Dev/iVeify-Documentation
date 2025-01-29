@@ -9,10 +9,12 @@ import { Navigation } from './components/Navigation';
 import { PageTransition } from './components/PageTransition';
 import { SearchProvider } from './hooks/useSearch';
 import { Architecture } from './pages/Architecture';
+import { Authentication } from './pages/Authentication';
 import { Configuration } from './pages/Configuration';
 import { Installation } from './pages/Installation';
 import { Introduction } from './pages/Introduction';
 import { QuickStart } from './pages/QuickStart';
+import { Subsystems } from './pages/Subsystems';
 import './styles/prism-custom.css';
 
 function AnimatedRoutes() {
@@ -50,6 +52,22 @@ function AnimatedRoutes() {
           element={
             <PageTransition>
               <Architecture />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/docs/subsystems"
+          element={
+            <PageTransition>
+              <Subsystems />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/docs/authentication"
+          element={
+            <PageTransition>
+              <Authentication />
             </PageTransition>
           }
         />

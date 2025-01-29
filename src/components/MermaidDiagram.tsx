@@ -1,7 +1,5 @@
 import mermaid from 'mermaid';
-
 import React, { useEffect, useRef } from 'react';
-
 import { useTheme } from '../hooks/useTheme';
 
 interface MermaidDiagramProps {
@@ -9,52 +7,53 @@ interface MermaidDiagramProps {
   className?: string;
 }
 
-// Initialize mermaid with default config
-mermaid.initialize({
-  startOnLoad: true,
-  theme: 'default',
-  securityLevel: 'loose',
-  themeVariables: {
-    fontFamily:
-      'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif',
-  },
-});
-
 export function MermaidDiagram({ definition, className = '' }: MermaidDiagramProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { isDarkMode } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (containerRef.current) {
-      // Update theme based on dark mode
-      mermaid.initialize({
-        theme: isDarkMode ? 'dark' : 'default',
-        themeVariables: isDarkMode
-          ? {
-              primaryColor: '#3b82f6',
-              primaryTextColor: '#e5e7eb',
-              primaryBorderColor: '#4b5563',
-              lineColor: '#6b7280',
-              secondaryColor: '#1f2937',
-              tertiaryColor: '#374151',
-            }
-          : undefined,
-      });
+      const renderDiagram = async () => {
+        // Clear previous content
+        containerRef.current!.innerHTML = '';
 
-      // Clear previous diagram
-      containerRef.current.innerHTML = definition;
+        // Configure Mermaid
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: theme === 'dark' ? 'dark' : 'default',
+          securityLevel: 'loose',
+          themeVariables: theme === 'dark' ? {
+            primaryColor: '#3b82f6',
+            primaryTextColor: '#e5e7eb',
+            primaryBorderColor: '#4b5563',
+            lineColor: '#6b7280',
+            secondaryColor: '#1f2937',
+            tertiaryColor: '#374151',
+          } : undefined,
+        });
 
-      // Render new diagram
-      mermaid.contentLoaded();
+        try {
+          // Generate unique ID for the diagram
+          const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
+          
+          // Render the diagram
+          const { svg } = await mermaid.render(id, definition);
+          containerRef.current!.innerHTML = svg;
+        } catch (error) {
+          console.error('Error rendering Mermaid diagram:', error);
+          containerRef.current!.innerHTML = `<div class="text-red-500">Error rendering diagram</div>`;
+        }
+      };
+
+      renderDiagram();
     }
-  }, [definition, isDarkMode]);
+  }, [definition, theme]);
 
   return (
-    <div
-      ref={containerRef}
-      className={`mermaid overflow-x-auto rounded-lg bg-gray-50 p-4 dark:bg-gray-800/50 ${className}`}
-    >
-      {definition}
-    </div>
+    <div 
+      ref={containerRef} 
+      className={`mermaid ${className}`}
+      style={{ background: 'transparent' }}
+    />
   );
 }

@@ -21,7 +21,9 @@ const navItems = [
     name: 'Core Concepts',
     items: [
       { name: 'Architecture', href: '/docs/architecture' },
+      { name: 'Subsystems', href: '/docs/subsystems' },
       { name: 'Configuration', href: '/docs/configuration' },
+      { name: 'Authentication', href: '/docs/authentication' },
     ],
   },
 ];

@@ -101,7 +101,39 @@ export const docs: DocPage[] = [
     - Municipality Management
     - Notification Service`,
     url: '/docs/architecture',
-    lastUpdated: '2025-01-28',
+    lastUpdated: '2024-01-29',
+  },
+  {
+    id: 'subsystems',
+    title: 'Subsystems',
+    content: `iVerify Subsystems:
+
+    1. Authentication Subsystem:
+    - User authentication
+    - Role-based access control
+    - Session management
+
+    2. Application Processing Subsystem:
+    - New application processing
+    - Application status updates
+    - Document verification
+
+    3. Document Management Subsystem:
+    - Document upload and storage
+    - Document retrieval and download
+    - Document version control
+
+    4. Reporting Subsystem:
+    - Statistical data generation
+    - Custom report creation
+    - Data export
+
+    5. Municipality Management Subsystem:
+    - Municipality configuration
+    - User role management
+    - Customization options`,
+    url: '/docs/subsystems',
+    lastUpdated: '2024-01-29',
   },
   {
     id: 'configuration',
@@ -242,5 +274,31 @@ export const docs: DocPage[] = [
     - Usage analytics`,
     url: '/docs/deployment',
     lastUpdated: '2025-01-28',
+  },
+  {
+    id: 'authentication',
+    title: 'Authentication',
+    content: `Authentication and Authorization:
+
+    1. Authentication System:
+    - JWT-based authentication
+    - Secure password management
+    - Email verification
+    - Password reset functionality
+    - Session management
+
+    2. Role-Based Access Control:
+    - Admin: Full system access
+    - Staff: Application processing
+    - Customer: Basic access
+
+    3. Security Features:
+    - Password requirements
+    - Session management
+    - Security headers
+    - CSRF protection
+    - XSS prevention`,
+    url: '/docs/authentication',
+    lastUpdated: '2024-01-29',
   }
 ];
